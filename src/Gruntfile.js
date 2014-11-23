@@ -22,8 +22,6 @@ module.exports = function (grunt) {
     var DEV = 'dev';
     var devTasks = [];
     var devSitePath = '../';
-    var devHttpPath = '/';
-    // devHttpPath = '/wp-content/themes/plain-theme/';
 
 
     // basic
@@ -112,9 +110,7 @@ module.exports = function (grunt) {
                 cssDir                  : path.resolve(devSitePath, CSS),
                 javascriptsDir          : path.resolve(devSitePath, JS),
                 imagesDir               : path.resolve(devSitePath, IMG),
-                generatedImagesPath     : path.resolve(devSitePath, IMG),
-                httpImagesPath          : path.resolve(devHttpPath, IMG),
-                httpGeneratedImagesPath : path.resolve(devHttpPath, IMG)
+                generatedImagesPath     : path.resolve(devSitePath, IMG)
             }
         });
         devTasks.push('compass:' + DEV);
