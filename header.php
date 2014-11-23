@@ -14,12 +14,10 @@
 <!-- ogp -->
 <meta property="og:url" content="<?php echo is_front_page() ? home_url() : the_permalink() ?>" />
 <meta property="og:type" content="<?php echo is_front_page() ? 'website' : 'article' ?>" />
-<?php if (is_front_page()) : ?>
-<meta property="og:image" content="<?php echo bloginfo('template_url') ?>/images/ogp.jpg" />
-<?php endif ?>
 <?php if ($url = get_thumbnail_url()) : ?>
 <meta property="og:image" content="<?php echo $url ?>" />
 <?php endif ?>
+<meta property="og:image" content="<?php echo bloginfo('template_url') ?>/images/ogp.jpg" />
 <meta property="og:title" content="<?php echo get_title_element_text() ?>" />
 <meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 <meta property="og:description" content="<?php bloginfo('description') ?>" />
