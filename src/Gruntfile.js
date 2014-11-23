@@ -23,6 +23,7 @@ module.exports = function (grunt) {
     var devTasks = [];
     var devSitePath = '../';
     var devHttpPath = '/';
+    // devHttpPath = '/wp-content/themes/plain-theme/';
 
 
     // basic
