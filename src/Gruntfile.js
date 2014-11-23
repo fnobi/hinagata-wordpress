@@ -24,35 +24,10 @@ module.exports = function (grunt) {
     var devSitePath = '../';
     var devHttpPath = '/';
 
-    // prod config
-    var PROD = 'prod';
-    var prodTasks = [];
-    var prodSitePath = path.join(process.env.HOME, 'Desktop', 'theme');
-    var prodHttpPath = '/';
-
 
     // basic
     {
         config.pkg =  grunt.file.readJSON('package.json');
-
-        grunt.loadNpmTasks('grunt-contrib-copy');
-        config.copy = {
-            prod: {
-                files: [
-                    { // img
-                        expand: true,
-                        src: path.join(devSitePath, IMG, '*'),
-                        dest: path.join(prodSitePath, IMG)
-                    },
-                    { // js lib
-                        expand: true,
-                        src: path.join(devSitePath, JS_LIB, '*'),
-                        dest: path.join(prodSitePath, JS)
-                    }
-                ]
-            }
-        };
-        prodTasks.push('copy:' + PROD);
     }
 
     // este watch
@@ -64,18 +39,6 @@ module.exports = function (grunt) {
             options: {
                 dirs: [],
                 livereload: { enabled: false }
-            }
-        };
-    }
-
-    // release
-    {
-        grunt.loadNpmTasks('grunt-release');
-
-        config.release = {
-            options: {
-                file: 'bower.json',
-                npm: false
             }
         };
     }
@@ -100,12 +63,6 @@ module.exports = function (grunt) {
         });
         devTasks.push('auto_deps:' + DEV);
 
-        // prod
-        config.auto_deps[PROD] = util.clone(autoDepsDefaultConfig, {
-            dest: path.resolve(prodSitePath, JS)
-        });
-        prodTasks.push('auto_deps:' + PROD);
-    
         // watch
         config.esteWatch.options.dirs.push(JS + '/*.js');
         config.esteWatch['js'] = function () { return 'auto_deps:' + DEV; };
@@ -114,6 +71,8 @@ module.exports = function (grunt) {
     
     // js lib copy
     (function () {
+        grunt.loadNpmTasks('grunt-contrib-copy');
+
         var libs = [
             'bower_components/html5shiv/src/html5shiv.js'
         ];
@@ -127,6 +86,8 @@ module.exports = function (grunt) {
                 dest: path.resolve(devSitePath, JS_LIB)
             });
         });
+
+        config.copy = {};
         config.copy[DEV] = { files: files };
         devTasks.push('copy:' + DEV);
     })();
@@ -156,20 +117,6 @@ module.exports = function (grunt) {
             }
         });
         devTasks.push('compass:' + DEV);
-
-        // prod
-        config.compass[PROD] = util.clone(compassDefaultConfig, {
-            options: {
-                cssDir                  : path.resolve(prodSitePath, CSS),
-                javascriptsDir          : path.resolve(prodSitePath, JS),
-                imagesDir               : path.resolve(prodSitePath, IMG),
-                generatedImagesPath     : path.resolve(prodSitePath, IMG),
-                httpImagesPath          : path.resolve(prodHttpPath, IMG),
-                httpGeneratedImagesPath : path.resolve(prodHttpPath, IMG),
-                environment             : 'production'
-            }
-        });
-        prodTasks.push('compass:' + PROD);
         
         // watch
         config.esteWatch.options.dirs.push(SASS + '/*.scss');
@@ -181,7 +128,6 @@ module.exports = function (grunt) {
     
     // set as task
     grunt.registerTask(DEV, devTasks);
-    grunt.registerTask(PROD, prodTasks);
 
     // init
     grunt.initConfig(config);
