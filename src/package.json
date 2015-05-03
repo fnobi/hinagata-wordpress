@@ -1,18 +1,19 @@
 {
   "name": "theme",
+  "description": "wordpress theme markup.",
   "version": "0.1.0",
   "engines": {
     "node": ">=0.10.26"
   },
   "scripts": {
-    "preinstall": "npm -g install grunt-cli",
-    "build": "grunt dev"
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-este-watch": "git://github.com/fnobi/grunt-este-watch.git",
-    "grunt-contrib-copy": "0.5.0",
-    "grunt-contrib-compass": "0.3.0",
-    "grunt-auto-deps": "0.4.1"
+    "varline": "1.*",
+    "gulp": "3.*",
+    "vinyl-source-stream": "1.1.0",
+    "gulp-ruby-sass": "1.0.0",
+    "js-yaml": "3.*"
   }
 }
