@@ -24,7 +24,7 @@
 <meta property="og:locale" content="ja_JP" />
 
 <!-- stylesheets -->
-<script src="<?php echo bloginfo('template_url') ?>/js/lib/html5shiv.js"></script>
+<script src="<?php echo bloginfo('template_url') ?>/js/lib/html5shiv.min.js"></script>
 <link rel="stylesheet" href="<?php echo bloginfo('template_url') ?>/css/theme.css" />
 
 <!-- wp head -->
