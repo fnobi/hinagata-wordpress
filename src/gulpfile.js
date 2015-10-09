@@ -24,11 +24,6 @@ var DEST_CSS = path.join(DEST, 'css');
 var DEST_JS = path.join(DEST, 'js');
 var DEST_JS_LIB = path.join(DEST_JS, 'lib');
 
-var HTTP_PATH = '/';
-var HTTP_PATH_CSS = path.join(HTTP_PATH, 'css');
-var HTTP_PATH_JS = path.join(HTTP_PATH, 'js');
-var HTTP_PATH_IMG = path.join(HTTP_PATH, 'img');
-
 
 var onError = function (err) {
     console.error('Error!', err.message);
