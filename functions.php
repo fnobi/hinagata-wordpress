@@ -5,6 +5,9 @@
  */
 add_theme_support('post-thumbnails');
 
+// disable admin-bar
+// add_filter( 'show_admin_bar', '__return_false' );
+
 
 /*
  * @return site name and article title if necessary
