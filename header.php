@@ -14,7 +14,7 @@
 <!-- ogp -->
 <meta property="og:url" content="<?php echo is_front_page() ? home_url() : the_permalink() ?>" />
 <meta property="og:type" content="<?php echo is_front_page() ? 'website' : 'article' ?>" />
-<?php if ($url = get_thumbnail_url()) : ?>
+<?php if ($url = get_the_thumbnail_url()) : ?>
 <meta property="og:image" content="<?php echo $url ?>" />
 <?php endif ?>
 <meta property="og:image" content="<?php echo bloginfo('template_url') ?>/images/ogp.jpg" />
