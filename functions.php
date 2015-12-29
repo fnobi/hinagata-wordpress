@@ -52,7 +52,7 @@ function get_title_element_text() {
 /*
  * @return article thumbnail url or null
  */
-function get_thumbnail_url() {
+function get_the_thumbnail_url() {
     if (is_front_page()) {
         return NULL;
     }
