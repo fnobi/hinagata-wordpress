@@ -10,8 +10,14 @@ function custom_show_post_meta() {
         if ( ! $content = get_post_meta( $post->ID, $metaKey, TRUE ) ) {
             $content = '';
         }
+
+        $template = CUSTOMFIELD_STRING_INPUT_TEMPLATE;
+        if ($field['type'] == 'text') {
+            $template = CUSTOMFIELD_TEXT_INPUT_TEMPLATE;
+        }
+
         printf(
-            CUSTOMFIELD_STRING_INPUT_TEMPLATE,
+            $template,
             $metaKey,
             $field['label'],
             esc_attr( $content )

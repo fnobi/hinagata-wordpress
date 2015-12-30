@@ -16,8 +16,7 @@ add_theme_support('post-thumbnails');
 // disable admin-bar
 // add_filter( 'show_admin_bar', '__return_false' );
 
-// post-customfield keys
-define('CUSTOMFIELD_KEY_EXTERNAL_LINK', 'CUSTOMFIELD_POST_EXTERNAL_LINK');
+// post-customfield template
 define(
     'CUSTOMFIELD_STRING_INPUT_TEMPLATE',
     '<br />'
@@ -28,6 +27,19 @@ define(
     . '</div>'
     . '</div>'
 );
+define(
+    'CUSTOMFIELD_TEXT_INPUT_TEMPLATE',
+    '<br />'
+    . '<div class="postbox">'
+    . '<h3 class="hndle"><span>%2$s</span></h3>'
+    . '<div class="inside">'
+    . '<textarea cols="50" name="%1$s" id="%1$s_id">%3$s</textarea>'
+    . '</div>'
+    . '</div>'
+);
+
+// post-customfield keys
+define('CUSTOMFIELD_KEY_EXTERNAL_LINK', 'CUSTOMFIELD_POST_EXTERNAL_LINK');
 
 $CUSTOMFIELD_CONFIG = array(
     CUSTOMFIELD_KEY_EXTERNAL_LINK => array(
