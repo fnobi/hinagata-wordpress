@@ -72,3 +72,34 @@ function get_the_thumbnail_url() {
 function get_the_external_link() {
     return get_the_custom_meta(CUSTOMFIELD_KEY_EXTERNAL_LINK);
 }
+
+
+/*
+ * display category tree
+ */
+function category_tree ($root_id, $wrap = true) {
+    $categories = get_categories(array(
+        'child_of' => $root_id,
+        'hide_empty' => false
+    ));
+
+    if (!$categories) {
+        return;
+    }
+
+    if ($wrap) { echo '<ul>'; }
+    foreach($categories as $child) {
+        if ($child->parent != $root_id) {
+            continue;
+        }
+
+        $name = $child->name;
+        $link = get_category_link($child->cat_ID);
+        
+        echo "<li data-category-name=\"$name\">";
+        echo "<a href=\"$link\">$name</a>";
+        category_tree($child->cat_ID);
+        echo '</li>';
+    }
+    if ($wrap) { echo '</ul>'; }
+}
