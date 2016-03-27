@@ -64,12 +64,12 @@ function get_title_element_text() {
 /*
  * @return article thumbnail url or null
  */
-function get_the_thumbnail_url() {
+function get_the_thumbnail_url($size = 'thumbnail') {
     if (is_front_page()) {
         return NULL;
     }
     $image_id = get_post_thumbnail_id();
-    $image_props = wp_get_attachment_image_src($image_id, true);
+    $image_props = wp_get_attachment_image_src($image_id, $size);
     if (count($image_props) > 0) {
         return $image_props[0];
     } else {
